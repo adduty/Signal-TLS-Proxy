@@ -1,4 +1,4 @@
-FROM alpine:3.17 as build
+FROM alpine:3.19 as build
 
 ARG NGINX_VER='1.22.1'
 
@@ -26,7 +26,7 @@ RUN wget "https://nginx.org/download/nginx-${NGINX_VER}.tar.gz" \
     && make && make install \
     && cd .. && rm -rf "nginx-${NGINX_VER}*"
 
-FROM alpine:3.17 as final
+FROM alpine:3.19 as final
 
 RUN apk upgrade --update-cache \
     && apk add \
